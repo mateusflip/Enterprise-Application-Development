@@ -1,4 +1,4 @@
-# Enterprise-Application-Development
+# Enterprise Application Development
 Exercícios e exemplos feitos nas aulas de Enterprise Application Develop utilizando Java
 
 Descrição de cada projeto:
