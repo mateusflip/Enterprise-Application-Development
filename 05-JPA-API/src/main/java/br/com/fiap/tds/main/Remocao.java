@@ -6,34 +6,25 @@ import javax.persistence.Persistence;
 
 import br.com.fiap.persistence.Filmes;
 
-public class Refresh {
+public class Remocao {
 
 	public static void main(String[] args) {
-		// Obter Fábrica e o entity manager
+		//Obter um entity manager
 		EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("oracle");
 		EntityManager em = fabrica.createEntityManager();
-		
-		//Pesquisar o filme de código 1
+		//Pesquisar um filme
 		Filmes filme = em.find(Filmes.class, 1);
 		
-		//Exibir o nome do filme
-		System.out.println(filme.getNome());
+		//Remover o filme
+		em.remove(filme);
 		
-		//Alterar o nome do filme no objeto(setNome)
-		filme.setNome("Liga da Justiça");
-		
-		//Exibir o nome do filme
-		System.out.println(filme.getNome());
-		
-		//Refresh
-		em.refresh(filme);
-		
-		//Exibir o nome do filme
-		System.out.println(filme.getNome());
-		
-		//Fechar
+		//Commit
+		em.getTransaction().begin();
+		em.getTransaction().commit();
+		//fechar
 		em.close();
 		fabrica.close();
+		
 	}
 
 }

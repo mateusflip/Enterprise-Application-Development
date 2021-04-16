@@ -9,7 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -47,6 +47,10 @@ public class Filmes {
 
 	public Filmes() {}
 	
+	@PrePersist
+	public void executar() {
+		System.out.println("Antes de cadastrar...");
+	}
 	
 	public Filmes(String nome, Calendar lancamento, Genero genero, String sinopse, boolean premiado) {
 		super();
